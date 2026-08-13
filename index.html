@@ -154,6 +154,19 @@ tbody th{font-weight:700;font-size:.95rem}
 .invest .lede{margin-left:auto;margin-right:auto;color:rgba(255,255,255,.88)}
 .invest .btn-green{margin-top:36px}
 
+/* contact form */
+.contact-form{max-width:620px;margin:44px auto 0;text-align:left;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:var(--radius);padding:34px 30px;backdrop-filter:blur(8px)}
+.field{margin-bottom:22px}
+.field label{display:block;font-family:"Nunito Sans",Arial,sans-serif;font-weight:800;font-size:.9rem;letter-spacing:.04em;margin-bottom:8px;color:#fff}
+.field .opt{font-weight:400;color:rgba(255,255,255,.7);text-transform:none;letter-spacing:0}
+.field input,.field textarea{width:100%;font-family:inherit;font-size:16px;padding:13px 15px;border-radius:8px;border:1.5px solid rgba(255,255,255,.35);background:#fff;color:var(--ink)}
+.field input:focus,.field textarea:focus{outline:3px solid var(--green);outline-offset:1px;border-color:var(--green)}
+.field textarea{resize:vertical;min-height:120px}
+.field.invalid input,.field.invalid textarea{border-color:#ffb4a2;outline-color:#ffb4a2}
+.ferr{margin-top:7px;font-size:.85rem;font-weight:700;color:#ffd9cf}
+.contact-form .btn{width:100%;border:0;font-size:1.05rem}
+.contact-form .btn[disabled]{opacity:.75;cursor:progress}
+
 /* contact email fallback */
 .email-row{margin-top:26px;display:flex;flex-direction:column;align-items:center;gap:12px}
 .email-row p{font-size:.95rem;color:rgba(255,255,255,.85)}
@@ -431,9 +444,31 @@ sup a{text-decoration:none;color:var(--teal);font-weight:700}
     <span class="eyebrow" style="color:rgba(255,255,255,.85)">Get In Touch</span>
     <h2>The next platform shift in surgical imaging is software.</h2>
     <p class="lede">$33M raised. Three foundational patents with allowable subject matter. A team that built this market once already. Based in Nashua, New Hampshire.</p>
-    <a class="btn btn-green" href="mailto:info@seeall.ai?subject=Investor%20inquiry%20%E2%80%94%20See%20All%20AI">Contact investor relations</a>
+    <form class="contact-form" method="POST" action="/api/lead" novalidate>
+      <input type="hidden" name="_form" value="investor">
+      <div class="field">
+        <label for="cf-name">Name</label>
+        <input id="cf-name" name="name" type="text" autocomplete="name" placeholder="e.g. Jordan Reyes&#8230;" required>
+        <p class="ferr" id="err-name" hidden>Please enter your name.</p>
+      </div>
+      <div class="field">
+        <label for="cf-firm">Firm <span class="opt">(optional)</span></label>
+        <input id="cf-firm" name="firm" type="text" autocomplete="organization" placeholder="e.g. Granite Peak Capital&#8230;">
+      </div>
+      <div class="field">
+        <label for="cf-email">Email</label>
+        <input id="cf-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="e.g. jordan@firm.com&#8230;" required>
+        <p class="ferr" id="err-email" hidden>Please enter a valid email address.</p>
+      </div>
+      <div class="field">
+        <label for="cf-message">Message</label>
+        <textarea id="cf-message" name="message" rows="5" placeholder="What would you like to discuss?&#8230;" required></textarea>
+        <p class="ferr" id="err-message" hidden>Please enter a message.</p>
+      </div>
+      <button type="submit" class="btn btn-green" id="cf-submit">Contact investor relations</button>
+    </form>
     <div class="email-row">
-      <p>Opens your email app. No email app on this device? Write to <span class="email-addr" id="ir-email">info@seeall.ai</span></p>
+      <p>Prefer email? Write to <span class="email-addr" id="ir-email">info@seeall.ai</span></p>
       <button type="button" class="btn-copy" id="copy-email">Copy email address</button>
     </div>
   </div>
@@ -476,6 +511,34 @@ sup a{text-decoration:none;color:var(--teal);font-weight:700}
     btn.setAttribute('aria-label',open?'Close menu':'Open menu');
   });
   list.addEventListener('click',function(e){if(e.target.closest('a'))list.classList.remove('open');});
+  var form=document.querySelector('.contact-form');
+  if(form){
+    var fields=[
+      {id:'cf-name',err:'err-name',ok:function(v){return v.trim().length>0;}},
+      {id:'cf-email',err:'err-email',ok:function(v){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim());}},
+      {id:'cf-message',err:'err-message',ok:function(v){return v.trim().length>0;}}
+    ];
+    function check(f){
+      var el=document.getElementById(f.id),err=document.getElementById(f.err);
+      var good=f.ok(el.value);
+      err.hidden=good;el.closest('.field').classList.toggle('invalid',!good);
+      el.setAttribute('aria-invalid',good?'false':'true');
+      return good;
+    }
+    fields.forEach(function(f){
+      document.getElementById(f.id).addEventListener('blur',function(){check(f);});
+      document.getElementById(f.id).addEventListener('input',function(){
+        if(!document.getElementById(f.err).hidden)check(f);
+      });
+    });
+    form.addEventListener('submit',function(e){
+      var firstBad=null;
+      fields.forEach(function(f){if(!check(f)&&!firstBad)firstBad=f;});
+      if(firstBad){e.preventDefault();document.getElementById(firstBad.id).focus();return;}
+      var btn=document.getElementById('cf-submit');
+      btn.disabled=true;btn.textContent='Sending…';
+    });
+  }
   var copyBtn=document.getElementById('copy-email');
   if(copyBtn){
     copyBtn.addEventListener('click',function(){
