@@ -487,7 +487,11 @@ sup a{text-decoration:none;color:var(--teal);font-weight:700}
         try{if(document.execCommand('copy')){done();return;}}catch(err){}
         copyBtn.textContent='Select and copy: '+email;
       }
-      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(email).then(done,fallback);}else{fallback();}
+      if(navigator.clipboard&&navigator.clipboard.writeText){
+        var settled=false;
+        navigator.clipboard.writeText(email).then(function(){if(!settled){settled=true;done();}},function(){if(!settled){settled=true;fallback();}});
+        setTimeout(function(){if(!settled){settled=true;fallback();}},900);
+      }else{fallback();}
     });
   }
   if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
