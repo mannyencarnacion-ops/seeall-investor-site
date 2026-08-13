@@ -154,6 +154,20 @@ tbody th{font-weight:700;font-size:.95rem}
 .invest .lede{margin-left:auto;margin-right:auto;color:rgba(255,255,255,.88)}
 .invest .btn-green{margin-top:36px}
 
+/* contact email fallback */
+.email-row{margin-top:26px;display:flex;flex-direction:column;align-items:center;gap:12px}
+.email-row p{font-size:.95rem;color:rgba(255,255,255,.85)}
+.email-addr{font-weight:700;color:#fff;user-select:all}
+.btn-copy{font-family:"Nunito Sans",Arial,sans-serif;font-weight:700;font-size:.9rem;background:transparent;color:#fff;border:2px solid rgba(255,255,255,.55);border-radius:8px;padding:10px 20px;cursor:pointer;transition:border-color .2s ease,background-color .2s ease;touch-action:manipulation}
+.btn-copy:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.btn-copy.copied{background:var(--green);border-color:var(--green);color:var(--navy)}
+
+/* team linkedin */
+.p-links{margin-top:14px}
+.li-link{display:inline-flex;align-items:center;gap:8px;font-size:.85rem;font-weight:700;color:var(--teal);text-decoration:none;padding:6px 0;touch-action:manipulation}
+.li-link:hover{text-decoration:underline}
+.li-link svg{flex:none}
+
 /* disclaimer + footer */
 .disclaimer{background:var(--paper-soft);border-top:1px solid var(--hairline);padding:36px 0;font-size:.9rem;color:rgba(4,35,51,.7)}
 .disclaimer strong{color:var(--ink)}
@@ -194,7 +208,7 @@ sup a{text-decoration:none;color:var(--teal);font-weight:700}
         <li><a class="navlink" href="#compare">Why We Win</a></li>
         <li><a class="navlink" href="#market">Market</a></li>
         <li><a class="navlink" href="#team">Team</a></li>
-        <li><a class="btn btn-green btn-nav" href="mailto:info@seeall.ai?subject=Investor%20inquiry%20%E2%80%94%20See%20All%20AI">Investor Contact</a></li>
+        <li><a class="btn btn-green btn-nav" href="#contact">Investor Contact</a></li>
       </ul>
     </nav>
   </div>
@@ -381,6 +395,9 @@ sup a{text-decoration:none;color:var(--teal);font-weight:700}
           <h3>Gene Gregerson</h3>
           <p class="role">Founder &amp; Chief Innovation Officer</p>
           <p>Founded Breakaway Imaging, where he invented the O&#8209;arm&#8482; intraoperative imaging system, and led Mobius Imaging, developer of Airo&#174;.<sup><a href="#src-1">1</a></sup></p>
+          <p class="p-links"><a class="li-link" href="https://www.linkedin.com/in/gene-gregerson-4905b114/" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+            LinkedIn profile</a></p>
         </div>
       </article>
       <article class="person reveal">
@@ -389,6 +406,9 @@ sup a{text-decoration:none;color:var(--teal);font-weight:700}
           <h3>Eric Major</h3>
           <p class="role">Chief Executive Officer</p>
           <p>Veteran medtech executive; former President &amp; CEO of spine company K2M.<sup><a href="#src-6">6</a></sup></p>
+          <p class="p-links"><a class="li-link" href="https://www.linkedin.com/in/eric-major-197a1045/" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+            LinkedIn profile</a></p>
         </div>
       </article>
       <article class="person reveal">
@@ -397,18 +417,25 @@ sup a{text-decoration:none;color:var(--teal);font-weight:700}
           <h3>Dr. Todd Albert</h3>
           <p class="role">Chief Medical Officer</p>
           <p>Surgeon&#8209;in&#8209;Chief Emeritus, Hospital for Special Surgery, New York City.<sup><a href="#src-1">1</a></sup></p>
+          <p class="p-links"><a class="li-link" href="https://www.linkedin.com/in/todd-albert-5024841b8/" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+            LinkedIn profile</a></p>
         </div>
       </article>
     </div>
   </div>
 </section>
 
-<section class="invest">
+<section class="invest" id="contact">
   <div class="wrap">
     <span class="eyebrow" style="color:rgba(255,255,255,.85)">Get In Touch</span>
     <h2>The next platform shift in surgical imaging is software.</h2>
     <p class="lede">$33M raised. Three foundational patents with allowable subject matter. A team that built this market once already. Based in Nashua, New Hampshire.</p>
     <a class="btn btn-green" href="mailto:info@seeall.ai?subject=Investor%20inquiry%20%E2%80%94%20See%20All%20AI">Contact investor relations</a>
+    <div class="email-row">
+      <p>Opens your email app. No email app on this device? Write to <span class="email-addr" id="ir-email">info@seeall.ai</span></p>
+      <button type="button" class="btn-copy" id="copy-email">Copy email address</button>
+    </div>
   </div>
 </section>
 </main>
@@ -435,7 +462,7 @@ sup a{text-decoration:none;color:var(--teal);font-weight:700}
     </ol>
     <div class="fine">
       <p>Copyright &#169; 2026 See All. All Rights Reserved.</p>
-      <p><a href="mailto:info@seeall.ai">info@seeall.ai</a> &#183; Nashua, NH</p>
+      <p><a href="https://www.seeall.ai/terms-and-conditions" rel="noopener">Terms and conditions</a> &#183; <a href="https://www.seeall.ai/privacy-policy" rel="noopener">Privacy Policy</a> &#183; <a href="mailto:info@seeall.ai">info@seeall.ai</a> &#183; Nashua, NH</p>
     </div>
   </div>
 </footer>
@@ -449,6 +476,20 @@ sup a{text-decoration:none;color:var(--teal);font-weight:700}
     btn.setAttribute('aria-label',open?'Close menu':'Open menu');
   });
   list.addEventListener('click',function(e){if(e.target.closest('a'))list.classList.remove('open');});
+  var copyBtn=document.getElementById('copy-email');
+  if(copyBtn){
+    copyBtn.addEventListener('click',function(){
+      var email='info@seeall.ai';
+      function done(){copyBtn.classList.add('copied');copyBtn.textContent='Copied: '+email;setTimeout(function(){copyBtn.classList.remove('copied');copyBtn.textContent='Copy email address';},2500);}
+      function fallback(){
+        var r=document.createRange();r.selectNodeContents(document.getElementById('ir-email'));
+        var s=window.getSelection();s.removeAllRanges();s.addRange(r);
+        try{if(document.execCommand('copy')){done();return;}}catch(err){}
+        copyBtn.textContent='Select and copy: '+email;
+      }
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(email).then(done,fallback);}else{fallback();}
+    });
+  }
   if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
     var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.12});
     document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
